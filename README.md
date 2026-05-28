@@ -1,6 +1,6 @@
 # Backup Vercel Blob to S3
 
-_fork of (KoenRijpstra/backup-vercel-blob-to-s3)[https://github.com/KoenRijpstra/backup-vercel-blob-to-s3]_
+**fork of [KoenRijpstra/backup-vercel-blob-to-s3]([https://github.com/KoenRijpstra/backup-vercel-blob-to-s3)**
 
 A CLI tool to backup your Vercel Blob Storage to Amazon S3. This tool helps you maintain a secondary backup of your Vercel Blob Storage files by automatically syncing them to an S3 bucket.
 
