@@ -1,5 +1,7 @@
 # Backup Vercel Blob to S3
 
+_fork of (KoenRijpstra/backup-vercel-blob-to-s3)[https://github.com/KoenRijpstra/backup-vercel-blob-to-s3]_
+
 A CLI tool to backup your Vercel Blob Storage to Amazon S3. This tool helps you maintain a secondary backup of your Vercel Blob Storage files by automatically syncing them to an S3 bucket.
 
 ## Features
@@ -13,7 +15,7 @@ A CLI tool to backup your Vercel Blob Storage to Amazon S3. This tool helps you 
 ## Installation
 
 ```bash
-npm install -g https://github.com/KoenRijpstra/backup-vercel-blob-to-s3
+npm install -g https://github.com/HairCrusher/backup-vercel-blob-to-s3
 ```
 
 ## Prerequisites
@@ -38,6 +40,7 @@ AWS_REGION=your_aws_region
 AWS_BUCKET_NAME=your_bucket_name
 AWS_ACCESS_KEY_ID=your_aws_key_id
 AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+AWS_ENDPOINT=your_aws_endpoint
 ```
 
 ### Command-Line Options
@@ -48,12 +51,12 @@ backup-vercel-blob-to-s3 [options]
 
 Available options:
 
-- `-b, --batch-size <number>` - Number of files to process concurrently (default: 10)
-- `-p, --prefix <string>` - Prefix for files to backup (default: 'production/')
+- `-p, --prefix <string>` - Prefix for files to backup (default: '')
 - `--region <string>` - AWS region
 - `--bucket <string>` - S3 bucket name
 - `--access-key-id <string>` - AWS access key ID
 - `--secret-key <string>` - AWS secret access key
+- `--endpoint <string>` - S3 endpoint URL
 
 ## GitHub Actions Integration
 
@@ -77,10 +80,11 @@ jobs:
       AWS_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_ENDPOINT: ${{ secrets.AWS_ENDPOINT }}
 
     steps:
       - run: |
-          npm install -g https://github.com/KoenRijpstra/backup-vercel-blob-to-s3
+          npm install -g https://github.com/HairCrusher/backup-vercel-blob-to-s3
 
       - run: |
           backup-vercel-blob-to-s3
